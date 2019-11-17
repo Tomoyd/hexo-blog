@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a{
+            display:block;
+            list-style: none;
+            text-decoration: none;
+            padding:10px 0
+        }
+        a:hover{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function downloadFile() {
+        console.log(111)
+        //    创建a标签,并且不显示a标签
+        let aTag=document.createElement('a');
+        aTag.download="text.txt"
+        aTag.style.display='none'
+
+        //    创建a标签的href连接的地址
+        //    首先将内容变为blob地址
+        let blob=new Blob(["下载测试TEST"])
+        aTag.href=URL.createObjectURL(blob)
+        //    手动点击
+        // document.appendChild(aTag)
+        aTag.click();
+        aTag=null
+    }
+</script>
+<a href="./test.txt">下载 download</a>
+<a href="./test.txt" download>下载 含download</a>
+<button onclick="downloadFile()">下载 URL对象</button>
+</body>
+</html>
