@@ -8,11 +8,11 @@ comments: false
 
 ## 使用背景
 
-a 标签在实际开发过程中是会常用到，比如**下载，跳转页面，导航**等功能的实现，[示例地址](<https://tomoyd.github.io/hexo-blog/demos/aTag.html>)
+a 标签在实际开发过程中是会常用到，比如**下载，跳转页面，导航**等功能的实现
 
 ## 实现下载
 
-有三种方式可以实现
+有三种方式可以实现，[示例地址](<https://tomoyd.github.io/hexo-blog/demos/aTag.html>)
 
 - 直接使用`href`属性链接到资源地址
 
@@ -33,7 +33,7 @@ a 标签在实际开发过程中是会常用到，比如**下载，跳转页面�
   这种方式本质上也是创建一个可以链接资源的标签，然后进行手动点击，触发资源请求下载,本主题当然是使用a标签了
 
   ```javascript
-         function dowloadFile(){
+         function downloadFile(){
                  let aTag=document.createElement('a')
                   aTag.download="text.txt"
                   aTag.style.display='none'
@@ -50,8 +50,8 @@ a 标签在实际开发过程中是会常用到，比如**下载，跳转页面�
 
   ```javascript
   // 创建内容的连接地址
-  let blogContent=new Blog([content]) // content 为我们要导出的内容
-  let urlContent = URL.createObjectURL(blogContent)
+  let blobContent=new Blob([content]) // content 为我们要导出的内容
+  let urlContent = URL.createObjectURL(blobContent)
   //urlContent赋给href属性即可
   ```
 
