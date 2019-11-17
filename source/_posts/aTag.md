@@ -33,7 +33,7 @@ a 标签在实际开发过程中是会常用到，比如**下载，跳转页面�
   这种方式本质上也是创建一个可以链接资源的标签，然后进行手动点击，触发资源请求下载,本主题当然是使用a标签了
 
   ```javascript
-         function dowloadFile（）{
+         function dowloadFile(){
                  let aTag=document.createElement('a')
                   aTag.download="text.txt"
                   aTag.style.display='none'
@@ -55,4 +55,3 @@ a 标签在实际开发过程中是会常用到，比如**下载，跳转页面�
   //urlContent赋给href属性即可
   ```
 
-  
