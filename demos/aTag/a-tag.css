@@ -7,9 +7,9 @@ a{
 a:hover{
     font-weight: bold;
 }
-a:visited{
-    color:#00ce0d;
-}
+/*a:visited{*/
+    /*color:#00ce0d;*/
+/*}*/
 a:current{
     color:red;
 }
