@@ -1,0 +1,15 @@
+a{
+    display:block;
+    list-style: none;
+    text-decoration: none;
+    padding:10px 0
+}
+a:hover{
+    font-weight: bold;
+}
+a:visited{
+    color:#00ce0d;
+}
+a:current{
+    color:red;
+}
