@@ -55,3 +55,10 @@ a 标签在实际开发过程中是会常用到，比如**下载，跳转页面�
   //urlContent赋给href属性即可
   ```
 
+## 跳转链接
+        跳转需要考虑的一个问题是：跳转页面在什么地方展示，比如在整个窗口，在本页面的某个位置或者在新标签页展示
+    需要用的一个属性就是target属性，它的属性值决定了在哪里打开链接文档
+    其属性值可以为 _self(默认),_top(整个浏览器窗口打开)，_parent(在父级框架打开)，_blank(在新空白页打开)
+    也可以是iframename
+    可以认为_self,_parent,_blank,_top都是iframe的属性name的值，只不过这些值是HTML已经定义好的
+[预览地址](<https://tomoyd.github.io/hexo-blog/demos/aTag/nav.html>)
