@@ -13,7 +13,7 @@ a 标签在实际开发过程中是会常用到，比如**下载，跳转页面�
 ## 实现下载
 
 有三种方式可以实现，[示例地址](<https://tomoyd.github.io/hexo-blog/demos/aTag/download.html>)
-
+<!-- more -->
 - 直接使用`href`属性链接到资源地址
 
   ```html
