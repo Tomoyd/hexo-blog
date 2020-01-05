@@ -6,4 +6,10 @@ type: about
 comments: false
 ---
 
-这是一个个人博客，主要分享及记录一些前端技术，可能还会有一些其他爱好性质的随笔文章
+## 关于作者
+
+[个人简介](<https://tomoyd.github.io/hexo-blog/demos/resume/resume-zh/>)
+
+## 关于博客
+
+主要涉及前端开发的技术站及原理分享
