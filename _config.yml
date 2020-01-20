@@ -6,8 +6,8 @@
 title: Tomo
 subtitle: ''
 description: '我本当不打渔关门闭坐'
-keywords:
-author: Tomoyd
+keywords: tomo
+author: Tomo
 language: zh-Hans
 timezone: ''
 
@@ -15,7 +15,7 @@ timezone: ''
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://tomoyd.github.io/my-blog
 root: /my-blog/
-permalink: :year/:month/:day/:title/
+permalink: :title.html
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing index.html from permalinks
@@ -103,3 +103,14 @@ search:
   field: post
   format: html
   limit: 10000
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+nofollow:
+  enable: true
+  exclude:
+    - https://github/tomoyd
+    - 友链地址
