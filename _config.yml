@@ -4,9 +4,9 @@
 
 # Site
 title: Tomo
-subtitle: ''
+subtitle:
 description: '我本当不打渔关门闭坐'
-keywords: tomo
+keywords:
 author: Tomo
 language: zh-Hans
 timezone: ''
@@ -112,5 +112,5 @@ baidusitemap:
 nofollow:
   enable: true
   exclude:
-    - https://github/tomoyd
-    - 友链地址
+    -  https://github/tomoyd
+    -  友链地址
