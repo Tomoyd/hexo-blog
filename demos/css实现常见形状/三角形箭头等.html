@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三角形梯形箭头等</title>
+    <style>
+        div+div{
+            margin-top:10px;
+        }
+        .triangle{
+            width:0;
+            height:0;
+            border: solid;
+            border-width:173px 100px 0;
+            border-bottom: none;
+            transform: skew(50deg);
+            border-color: #FF0000 #00FF00 #0000FF #FFFF00;
+        }
+        .trapezoidal{
+            width:20px;
+            height:20px;
+            border: 90px solid;
+            border-color: #FF0000 #00FF00 #0000FF #FFFF00;
+        }
+       .fan{
+           background-color: #00FFFF;
+           height:200px;
+           width:200px;
+           border-radius: 100% 0 0;
+       }
+        .fan2{
+            border-radius:100%;
+            width:0;
+            border:100px solid;
+            border-color: #FF0000 #00FF00 #0000FF #FFFF00;
+        }
+        .arrow{
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            border-color: transparent #0f0 transparent transparent;
+            position: relative;
+        }
+        .arrow::after{
+            content: "";
+            position: absolute;
+            right: -55px;
+            top:-50px;
+            border: 50px solid;
+            border-color: transparent #fff transparent transparent;
+        }
+        .arrow2{
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            border-color:  #0f0 transparent transparent transparent;
+            position: relative;
+        }
+        .arrow2::after{
+           content:"";
+            top:-55px;
+            left:-50px;
+            border: 50px solid;
+            border-color:  #fff transparent transparent transparent;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="triangle"></div>
+<div class="trapezoidal"></div>
+<div class="fan"></div>
+<div class="fan2"></div>
+<div class="arrow"></div>
+<div class="arrow2"></div>
+</body>
+</html>

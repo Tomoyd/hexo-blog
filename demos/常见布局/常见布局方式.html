@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常见布局</title>
+    <style>
+        .container1{
+            padding:0 100px 0 200px;
+            border:1px solid #EEE;
+        }
+        .container1 .middle{
+            float: left;
+            background-color: #FF0;
+            width:100%;
+        }
+        .container1::after{
+            display:block;
+            content:"";
+            clear: both;
+        }
+        .container1 .left, .container1 .right{
+            float:left;
+            position:relative;
+        }
+        .container1 .left{
+            width:200px;
+            margin-left:-100%;
+            left:-200px;
+        }
+        .container1 .right{
+            width:100px;
+            margin-left:-100px;
+            right:-100px;
+        }
+        .container2 .middle{
+            width:100%;
+            background-color: #FF0000;
+            float:left;
+        }
+        .container2::after{
+            display:block;
+            content:"";
+            clear: both;
+        }
+        .middle .inner{
+            margin:0 100px 0 200px;
+        }
+        .container2 .left{
+            width:200px;
+            float:left;
+            margin-left:-100%;
+            background-color: #00c47d;
+        }
+        .container2 .right{
+            margin-left:-100px;
+            width:100px;
+            float:left;
+            background-color: #00c47d;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container1">
+    <div class="middle">hello</div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+<div class="container2">
+    <div class="middle">
+        <div class="inner">hello</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>

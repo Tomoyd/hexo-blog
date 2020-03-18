@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>margin float display</title>
+    <style>
+        .margin-container{
+            position:relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        .margin-container .center{
+            position:absolute;
+            margin:auto;
+            left:200px;
+            right:100px;
+            background-color: #FF00FF;
+        }
+        .margin-container .left{
+            position:absolute;
+            width:200px;
+            background-color: #00acec;
+        }
+        .margin-container .right{
+            position: absolute;
+            width:100px;
+            right:0;
+            background-color: #00F;
+        }
+        .float-container::after{
+            content:"";
+            display: block;
+            clear:both;
+        }
+        .float-container .inner{
+            float:left;
+            width:100%;
+        }
+        .inner::after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        .float-container .right{
+            float:left;
+            margin-left:-100px;
+            width:100px;
+            background-color: #FFFF00;
+        }
+        .float-container .left{
+            float:left;
+            width:200px;
+            background-color: #FF0000;
+        }
+        .float-container .center{
+            background-color: #00c47d;
+            margin-right:100px;
+        }
+        .display-container{
+            display: flex;
+        }
+        .display-left{
+            flex-basis: 200px;
+            background-color: #FFFF00;
+        }
+        .display-right{
+            flex-basis: 100px;
+            background-color: #00FF00;
+        }
+        .display-middle{
+            flex:1;
+            background-color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+<div>
+<div class="margin-container">
+    <div class="center">111</div>
+    <div class="left">222</div>
+    <div class="right">11</div>
+</div>
+</div>
+<div class="float-container">
+    <div class="inner">
+        <div class="left">1234</div>
+        <div class="center">11center</div>
+    </div>
+    <div class="right">float right</div>
+</div>
+<div class="display-container">
+    <div class="display-left">display-left</div>
+    <div class="display-middle">11</div>
+    <div class="display-right">display-right</div>
+</div>
+</body>
+</html>
