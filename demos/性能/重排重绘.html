@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重排重绘</title>
+    <style>
+        div{
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+<p>打开开发者工具查看运行时间</p>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<script>
+    let times=10000;
+    let div=document.getElementById("div1");
+    console.time("过桥+重排+重绘");
+    for(let i=0;i<times;i++){
+        div.innerHTML+="a"
+    }
+    console.timeEnd("过桥+重排+重绘");
+    let str="";
+    console.time("过桥");
+    for(let i=0;i<times;i++){
+        document.getElementById("div2").innerHTML;
+        str+="a"
+    }
+    document.getElementById("div2").innerHTML=str;
+    console.timeEnd("过桥");
+
+
+    str="";
+    console.time("不过桥");
+    for(let i=0;i<times;i++){
+
+        str+="a"
+    }
+    document.getElementById("div3").innerHTML=str;
+    console.timeEnd("不过桥");
+</script>
+</body>
+</html>

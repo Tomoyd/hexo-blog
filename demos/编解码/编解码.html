@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编解码</title>
+</head>
+<body>
+<script>
+    function utf8_encode(string) {
+        string=string.replace(/\r\n/g,"\n");
+        let utfText="";
+        for(let n=0;n<string.length;n++){
+            let c=string.charCodeAt(n);
+            if(n<128){
+                utfText+=String.fromCharCode(c)
+            }else if((c<2048)&&(c>127)){
+                utfText += String.fromCharCode((c >> 6) | 192);
+                utfText  += String.fromCharCode((c & 63) | 128);
+            }else {
+                utfText += String.fromCharCode((c >> 12) | 224);
+                utfText += String.fromCharCode(((c >> 6) & 63) | 128);
+                utfText += String.fromCharCode((c & 63) | 128);
+            }
+        }
+        return utfText
+    }
+    let uName=utf8_encode("胡玉东");
+    let nUTF=decodeURI(uName)
+    console.log(uName,nUTF)
+</script>
+
+</body>
+</html>
