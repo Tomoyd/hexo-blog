@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+    <meta charset="UTF-8">
+    <title>深入Vue原理</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="text" id="a">
+    <span id="b">{{text}}</span>
+</div>
+<script>
+    function nodeToFragment(node,vm){
+        let fragment=document.createDocumentFragment()
+        let child=null
+        while(child = node.firstChild){
+            compile(child,vm)
+            fragment.appendChild(child)
+        }
+        return fragment
+    }
+    function compile(node,vm) {
+        if(node.nodeType===1){
+            let attr=node.attributes;
+            let reg=/\{\{(.*)\}\}/;
+            if(node.firstChild&&reg.test(node.firstChild.nodeValue)){
+                let name=RegExp.$1;
+                name=name.trim()
+                new Watcher(vm,node.firstChild,name)
+            }
+            for(let i=0;i<attr.length;i++){
+                if(attr[i].nodeName=='v-model'){
+                    let name=attr[i].nodeValue;
+                    node.addEventListener("input",(e)=>{
+                        vm[name]=e.target.value;
+                    })
+                    new Watcher(vm,node,name)
+                    node.removeAttribute("v-model")
+                }
+            }
+        }
+    }
+    function defineReactive(obj,key,val) {
+        let dep=new Dep()
+        Object.defineProperty(obj,key,{
+            get:function(){
+                // 订阅者 每个观察者
+                if(Dep.target) dep.addSub(Dep.target);
+                return val
+            },
+            set:function(newValue){
+                if(newValue===val) return
+                 val=newValue;
+                // 发布者
+                dep.notify()
+            }
+        })
+    }
+    function observe(obj,vm) {
+        Object.keys(obj).forEach((key)=>{
+            defineReactive(vm,key,obj[key])
+        })
+    }
+    function Dep() {
+        this.subs=[]
+    }
+    Dep.prototype={
+        addSub:function (sub) {
+            this.subs.push(sub)
+        },
+        notify:function () {
+            this.subs.forEach((sub)=>{
+                sub.update()
+            })
+        }
+    }
+    function Watcher(vm,node,name){
+        Dep.target=this
+        this.name=name;
+        this.node=node;
+        this.vm=vm
+        this.update();
+        Dep.target=null
+    }
+    Watcher.prototype={
+        update:function () {
+            this.get();
+            if(this.node.nodeType===1){
+                this.node.value=this.value
+            }else{
+                this.node.nodeValue=this.value
+            }
+
+        },
+        get:function () {
+            this.value=this.vm[this.name]
+        }
+    }
+    function Vue(options) {
+        this.data=options.data;
+        observe(this.data,this);
+        let id=options.el
+        let dom=nodeToFragment(document.getElementById(id),this);
+        document.getElementById(id).append(dom)
+    }
+    let vm=new Vue({
+        el:"app",
+        data:{
+            text:"hello world"
+        }
+    })
+    console.log(vm)
+</script>
+</body>
+</html>
