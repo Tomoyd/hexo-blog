@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #listItem1{
+            background-color: pink;
+            margin-top:100px ;
+        }
+        #listItem{
+            margin-bottom: 100px;
+        }
+        #scrollArea{
+            height: 100px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="scrollArea">
+    scrollArea
+    <div id="listItem1">
+        listItem1
+    </div>
+    <div id="listItem">
+        listItem
+    </div>
+</div>
+<script>
+    var options = {
+        root: document.querySelector('#scrollArea'),
+        rootMargin: '0px 0px  -30px 0px',
+        threshold: 1
+    }
+    var callback = function(entries, observer) {
+        entries.forEach(entry => {
+            console.log("entry",entry)
+            // Each entry describes an intersection change for one observed
+            // target element:
+            //   entry.boundingClientRect
+            //   entry.intersectionRatio
+            //   entry.intersectionRect
+            //   entry.isIntersecting
+            //   entry.rootBounds
+            //   entry.target
+            //   entry.time
+        });
+    };
+    var observer = new IntersectionObserver(callback, options);
+    var target = document.querySelector('#listItem');
+    observer.observe(target);
+</script>
+
+</body>
+</html>
